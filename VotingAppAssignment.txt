@@ -1,0 +1,27 @@
+Delete them in same order:
+1st ► VOTE pod ► Observe what happens both in frontEnd & in Unix
+	frontEnd: 
+		voting: If I try to change vote it took sometime to reload page & then able to vote.
+		result: Previous votes are not lost & able to see latest vote also.
+	Unix: Only vote pod deleted & new vote pod came up with different name in 3rd syllabi
+2nd ► WORKER pod  ► Observe what happens both in frontEnd & in Unix
+	frontEnd: 
+		voting: If I try to change vote it took sometime to reload page & then able to vote.
+		result: Previous votes are not lost & able to see latest vote also.
+	Unix: Only worker pod deleted & new pod came up with different name in 3rd syllabi
+3rd ► DB pod ► Observe what happens both in frontEnd & in Unix
+	frontEnd: 
+		voting: Able to see existing vote & able to change existing vote also.
+		result: Previous votes are lost & able to see only latest vote.
+	Unix: it took more time than vote & worker pod delete. db pod deleted & new pod came up with different name in 3rd syllabi but result & worker pod's containers restarted.
+
+3. your comment on WHY result app STOPPED working after db pod stop
+	Result pod is using socket connection to fetch data from db. So once db pod stopped they have written in core to reconnect i.e. restarting container so result app STOPPED working after db pod stop.  
+
+4. your answer to HOW YOU MADE THE RESULT POD work.
+	Nothing, its container restarted automatically & after that it is working just the old votes are lost.
+
+5. Some jargons (just names are enough- dont need sentences) that you learnt from the  Training session
+	host, VM, basic AWS Linux & ubuntu commands, microservices, DevOps tools like Jenkins, JIRA.
+	Docker: Installing docker, pulling & checking downloaded images. Creating, attaching & listing all containers including exited, exec & deleting containers.
+	K8s: Installing k8s in master & worker nodes, creating ns & changing default ns in config file, creating, exec & deleting pods, api resources to check short names, creating & deleting label, curl, port, NodePort, localhost, creating & deleting controllers, services, deployment, volumes & networking.
